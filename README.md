@@ -1,4 +1,4 @@
-# Keypoint Detction: Sample Application on AITRIOS
+# Keypoint Detection: Sample Application on AITRIOS
 
 ## Contents
 
