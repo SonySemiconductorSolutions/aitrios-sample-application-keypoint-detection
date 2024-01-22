@@ -1,0 +1,96 @@
+{
+  "name": "keypoint-devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
+      // Append -bullseye or -buster to pin to an OS version.
+      // Use -bullseye variants on local on arm64/Apple Silicon.
+      "VARIANT": "3.9-bullseye"
+    }
+  },
+  "runArgs": [
+    "--init",
+    "--shm-size=256m"
+  ],
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [
+    3000,
+    5000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "keypoint-frontend",
+      "onAutoForward": "notify"
+    },
+    "5000": {
+      "label": "keypoint-backend",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": [
+    ".devcontainer/postCreateCommand.sh"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        },
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.languageServer": "Pylance",
+        "editor.formatOnSave": true,
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "black-formatter.args": [
+          "--line-length=99"
+        ],
+        "flake8.args": [
+          "--max-line-length=99",
+          "--ignore=E203,E266,W503,W402",
+          "--max-complexity=10"
+        ],
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "prettier.workingDirectories": [
+          {
+            "mode": "auto"
+          }
+        ],
+        "eslint.workingDirectories": [
+          {
+            "mode": "auto"
+          }
+        ]
+      },
+      "extensions": [
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

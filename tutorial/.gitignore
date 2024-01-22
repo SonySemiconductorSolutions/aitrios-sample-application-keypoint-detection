@@ -1,0 +1,3 @@
+*.tflite
+configuration.json
+console_access_settings.yaml

@@ -1,0 +1,26 @@
+{
+    "roots": [
+      "<rootDir>/test"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.test.json"
+        }
+      ]
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(xxxx.*?\\.js$))"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
