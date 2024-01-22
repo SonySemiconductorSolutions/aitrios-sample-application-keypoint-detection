@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app:cached
+    command: bash -c 'flask run'
+    ports:
+      - 5000:5000
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app:cached
+      - node_modules:/app/node_modules
+    command: bash -c 'npm run dev'
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+volumes:
+    node_modules:

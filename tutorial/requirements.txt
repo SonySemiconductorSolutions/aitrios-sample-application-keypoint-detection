@@ -1,0 +1,5 @@
+# To run the tutorial with Jupyter Notebook, the following dependencies must be installed by run 'pip install -r requirements.txt'.
+# This process is automatically executed at startup when using DevContainer, so manual execution is not necessary.
+
+notebook
+./../backend/lib/console-access-api/
