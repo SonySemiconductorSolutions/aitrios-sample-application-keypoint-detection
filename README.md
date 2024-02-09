@@ -1,4 +1,4 @@
-# Keypoint Detection: Sample Application on AITRIOS
+# Keypoint Detction: Sample Application on AITRIOS
 
 ## Contents
 
@@ -60,17 +60,22 @@ The following is an example of minimum operable parameters. Save it as a JSON fi
     {
       "command_name": "StartUploadInferenceData",
       "parameters": {
-        "MaxDetectionsPerFrame": 5,
         "Mode": 2,
         "ModelId": "PoseNet_KeypointDet",
         "NumberOfInferencesPerMessage": 1,
         "PPLParameter": {
-          "header": {
-            "id": "00",
-            "version": "01.01.00"
-          },
-          "input_height": 353,
-          "input_width": 481
+          "input_width" : 481,
+          "input_height" : 353,
+          "output_width" : 31,
+          "output_height" : 23,
+          "score_threshold" : 0.5,
+          "iou_threshold" : 0.28,
+          "nms_radius" : 20,
+          "max_pose_detections" : 15,
+          "heatmap_index" : 0,
+          "offset_index" : 1,
+          "forward_displacement_index" : 2,
+          "backward_displacement_index" : 3
         },
         "UploadInterval": 30,
         "UploadMethodIR": "MQTT"
